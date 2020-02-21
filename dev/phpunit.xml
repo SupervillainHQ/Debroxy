@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./phpunit.php">
+    <testsuites>
+        <testsuite name="All Suites">
+            <directory>./src/SupervillainHQ/Debroxy</directory>
+        </testsuite>
+        <testsuite name="Cli Suite">
+            <directory>./src/SupervillainHQ/Debroxy/Cli</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+    </php>
+</phpunit>

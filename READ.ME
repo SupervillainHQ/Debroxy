@@ -9,3 +9,19 @@ Debroxy is a remote service that you can use to debug your client api-calls, or 
   0. Hit http://debroxy.vvb/
 
 
+## Use Cases
+
+### Use Case: Unit-testing
+
+Using a Debroxy mock service proxy object, without doing a round-trip to a server. The proxy instantiates and returns
+(predefined) mock response objects.
+
+### Use Case: Mock Api
+
+Using a Debroxy mock api-client object that submits a request to a remote Debroxy server, responding with (predefined)
+response objects.
+
+### Use Case: Debug Service
+
+Pointing a real api-client to a Debroxy service that responds to real requests, but responds with (predefined) mock
+response objects.
