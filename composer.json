@@ -11,7 +11,12 @@
 	"repositories": [],
 	"autoload": {
 		"psr-0": {
-			"": "src"
+			"": "app/src"
+		}
+	},
+	"autoload-dev": {
+		"psr-0": {
+			"": "dev/src"
 		}
 	},
 	"require": {
@@ -20,11 +25,10 @@
 		"ext-mongodb" : "*",
 		"ext-phalcon" : "*",
 		"bugsnag/bugsnag": "^3.4",
-		"mongodb/mongodb": "^1.0",
-		"nategood/commando": "^0.3.0"
+		"mongodb/mongodb": "^1.0"
 	},
 	"require-dev":{
-		"phalcon/devtools": "^3",
-		"phpunit/phpunit": "^4.8"
+		"phalcon/devtools": "^4",
+		"phpunit/phpunit": "^8"
 	}
 }

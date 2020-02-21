@@ -22,7 +22,7 @@ apt-get update
 
 apt-get install -y php7.3 php7.3-dev php7.3-zip php7.3-fpm php7.3-cli php7.3-curl php7.3-gd php7.3-intl php7.3-mbstring php7.3-xml
 apt-get install -y php-msgpack php-gettext php-xdebug php-redis php-mongodb php-psr
-apt-get install -y php7.3-phalcon
+apt-get install -y php-phalcon4
 
 apt-get install -y gettext nodejs npm zip
 apt-get install -y redis-server
@@ -44,6 +44,11 @@ mv composer.phar /usr/local/bin/composer
 chown root:root /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 
+# enabling swap in order to allow composer memory enough
+/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+/sbin/mkswap /var/swap.1
+/sbin/swapon /var/swap.1
+
 # phpunit
 wget https://phar.phpunit.de/phpunit.phar -O /usr/local/bin/phpunit
 chown root:root /usr/local/bin/phpunit
@@ -54,7 +59,7 @@ ln -s /usr/bin/nodejs /usr/local/bin/node
 
 systemctl start ntp.service
 
-a2enmod setenvif actions rewrite
+a2enmod setenvif actions rewrite proxy_fcgi
 
 # fix npm permissions (https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
 mkdir /home/vagrant/.npm-global
