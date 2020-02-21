@@ -1,0 +1,27 @@
+{
+	"global": {
+		"responses": {
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"name": "Cache-Control",
+					"value": "no-cache"
+				}
+			]
+		}
+	},
+	"requests": {
+		"": {
+			"headers" : []
+		},
+		"/": {
+			"headers" : []
+		},
+		"/test": {
+			"headers" : []
+		}
+	}
+}
