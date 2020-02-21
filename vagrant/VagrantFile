@@ -2,6 +2,11 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+    config.trigger.after :up do |trigger|
+        trigger.name = "restart services"
+        trigger.info = "restarting apache and fpm ..."
+        trigger.run = {path: "restart-services.sh"}
+    end
     config.vm.box = "ubuntu/bionic64"
     config.vm.provider "virtualbox" do |v|
         v.name = "svhq-debroxy"
@@ -9,7 +14,7 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
         v.customize ["modifyvm", :id, "--memory", "384"]
     end
-    #config.vm.provision :shell, :path => "bootstrap.sh"
+    config.vm.provision :shell, :path => "bootstrap.sh"
     config.vm.synced_folder "../", "/var/www/debroxy.vvb", owner: "www-data", group: "vagrant", mount_options: ["dmode=775,fmode=664"]
     config.vm.synced_folder "../dev/resources", "/srv/resources", owner: "www-data", group: "vagrant", mount_options: ["dmode=775,fmode=664"]
     config.vm.network :forwarded_port, guest: 22, host: 2253, id: 'ssh', auto_correct: true

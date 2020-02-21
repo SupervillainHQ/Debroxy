@@ -81,6 +81,12 @@ fi
 ln -fs /vagrant/php/php-cli.ini /etc/php/7.3/cli/php.ini
 ln -fs /vagrant/php/php.ini /etc/php/7.3/fpm/php.ini
 
+# enable sites
+if [[ -h /etc/apache2/sites-enabled/000-default.conf ]]; then
+	unlink /etc/apache2/sites-enabled/000-default.conf
+fi
+ln -fs /vagrant/default.conf /etc/apache2/sites-enabled/debroxy.vvb.conf
+
 # ensure relevant bin/ folders is in our path (composer)
 grep -q -F 'PATH="/var/www/debroxy/vendor/bin:$PATH"' /home/vagrant/.profile || echo 'PATH="/var/www/debroxy/vendor/bin:$PATH"' >> /home/vagrant/.profile
 
