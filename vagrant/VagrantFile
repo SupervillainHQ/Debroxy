@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--memory", "384"]
     end
     #config.vm.provision :shell, :path => "bootstrap.sh"
-    config.vm.synced_folder "../", "/var/www/debroxy", owner: "www-data", group: "vagrant", mount_options: ["dmode=775,fmode=664"]
+    config.vm.synced_folder "../", "/var/www/debroxy.vvb", owner: "www-data", group: "vagrant", mount_options: ["dmode=775,fmode=664"]
     config.vm.synced_folder "../dev/resources", "/srv/resources", owner: "www-data", group: "vagrant", mount_options: ["dmode=775,fmode=664"]
     config.vm.network :forwarded_port, guest: 22, host: 2253, id: 'ssh', auto_correct: true
     config.vm.network "private_network", ip: "192.168.56.133"
